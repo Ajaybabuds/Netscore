@@ -1,4 +1,3 @@
-  
 import pandas as pd 
 import numpy as np
 import streamlit as st
@@ -12,7 +11,7 @@ uploaded_file=st.file_uploader('Choose a File')
 if uploaded_file is not None:
     df=pd.read_csv(uploaded_file,engine='python',encoding='utf-8')
     sales=df.loc[:,['Internal ID','Date','Amount']]
-    def drop(df1):
+    def dropout(df1):
         for x in df1.columns:
             if x=='Internal ID':
                 if df1[x].nunique()==df1.shape[0]:
@@ -20,7 +19,7 @@ if uploaded_file is not None:
                 else:
                     df1[x]=df1[x].drop_duplicates(keep='first')
                     return df1[x].dropna().index
-    sales=sales.reindex(drop(sales))
+    sales=sales.reindex(dropout(sales))
     sales['Date']=pd.to_datetime(sales['Date'])
     sales['month']=sales['Date'].dt.month
     sales['year']=sales['Date'].dt.year.astype('str')
