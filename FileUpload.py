@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[19]:
-
-
 import pandas as pd 
 import numpy as np
 import streamlit as st
@@ -95,15 +89,6 @@ if uploaded_file is not None:
                                         pvt=pd.pivot_table(data=sales,values='Amount',index=a,columns=b,aggfunc=[np.sum]
                                                       ,fill_value='-',margins=True,margins_name='Total').round(2)
                                         st.dataframe(pvt)
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
 
 
 
